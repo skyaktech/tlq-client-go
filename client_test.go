@@ -92,7 +92,9 @@ func TestClient_AddMessage(t *testing.T) {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(expectedMessage)
+		if err := json.NewEncoder(w).Encode(expectedMessage); err != nil {
+			t.Fatalf("Failed to encode response: %v", err)
+		}
 	}))
 	defer server.Close()
 
@@ -155,7 +157,9 @@ func TestClient_GetMessages(t *testing.T) {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(expectedMessages)
+		if err := json.NewEncoder(w).Encode(expectedMessages); err != nil {
+			t.Fatalf("Failed to encode response: %v", err)
+		}
 	}))
 	defer server.Close()
 
@@ -236,7 +240,9 @@ func TestClient_DeleteMessages(t *testing.T) {
 func TestClient_DeleteMessage(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var payload map[string][]string
-		json.NewDecoder(r.Body).Decode(&payload)
+		if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+			t.Fatalf("Failed to decode request body: %v", err)
+		}
 
 		if len(payload["ids"]) != 1 || payload["ids"][0] != "msg1" {
 			t.Errorf("Expected single ID 'msg1', got %v", payload["ids"])
@@ -308,7 +314,9 @@ func TestClient_RetryMessages(t *testing.T) {
 func TestClient_RetryMessage(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var payload map[string][]string
-		json.NewDecoder(r.Body).Decode(&payload)
+		if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+			t.Fatalf("Failed to decode request body: %v", err)
+		}
 
 		if len(payload["ids"]) != 1 || payload["ids"][0] != "msg1" {
 			t.Errorf("Expected single ID 'msg1', got %v", payload["ids"])
