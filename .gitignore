@@ -25,6 +25,7 @@ go.work.sum
 *~
 .vscode/
 *.code-workspace
+.claude/
 
 # OS specific files
 .DS_Store
