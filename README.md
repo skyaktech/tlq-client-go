@@ -268,7 +268,7 @@ tlq
 Or run with Docker:
 
 ```bash
-docker run -p 1337:1337 ghcr.io/skyaktech/tlq:latest
+docker run -p 1337:1337 nebojsa/tlq:latest
 ```
 
 ## Contributing
