@@ -168,4 +168,3 @@ func main() {
 	wg.Wait()
 	log.Println("All workers and producer stopped. Goodbye!")
 }
-

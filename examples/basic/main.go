@@ -87,4 +87,3 @@ func main() {
 		fmt.Println("Queue purged successfully")
 	}
 }
-

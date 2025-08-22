@@ -417,4 +417,3 @@ func TestClient_ContextCancellation(t *testing.T) {
 		t.Error("Expected context cancellation error, got nil")
 	}
 }
-

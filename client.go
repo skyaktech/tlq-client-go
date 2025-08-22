@@ -250,4 +250,3 @@ func (c *Client) PurgeQueue(ctx context.Context) error {
 
 	return nil
 }
-
