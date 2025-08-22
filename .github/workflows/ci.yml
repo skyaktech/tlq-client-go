@@ -80,5 +80,5 @@ jobs:
 
     - name: Verify examples compile
       run: |
-        go build -o /tmp/basic ./examples/basic.go
-        go build -o /tmp/worker ./examples/worker.go
+        go build -o /tmp/basic ./examples/basic
+        go build -o /tmp/worker ./examples/worker
